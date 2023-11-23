@@ -17,4 +17,11 @@
 ls
 greet     greet.go
 ```
-    * This can be executed via `./greet`
+* This can be executed via `./greet`
+
+## Running Files
+* We can directly run a file instead of the two step process shown above of compilation and then running
+    * The `go run` command compiles the code and then runs it
+    * But an executable **won't** be created in our directory
+    * E.g. `go run greet.go`
+* Useful for quick testing of code 
