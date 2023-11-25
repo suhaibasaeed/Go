@@ -31,9 +31,13 @@ greet     greet.go
   * Essentially like a directory
   * E.g. calculator program would have calculation `.go` files in `calc` package
     *  I/O related go files in `io` package
-* 1st line in below example `package main` tells compiler **which package** file belongs to
-  * It is **package declaration**
-  * Specifying `package main` ensures program compiles into **executable**
+* Simple example
+  * 1st line below `package main` tells compiler **which package** file belongs to
+    * It is **package declaration**
+    * Specifying `package main` ensures program compiles into **executable**
+  * 2nd line of code imports function from another package via `import` command
+    * Notice that package name is in **quotes**
+    * 
 ```
 package main 
 
