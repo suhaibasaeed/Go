@@ -88,3 +88,22 @@ import (
   "package2"
 )
 ```
+
+### Comments
+* There are two different types of comment in Go
+  * Single-line using `//`
+    * E.g.
+```
+// This entire line is ignored by the compiler
+// fmt.Println("Does NOT print")
+fmt.Println("This gets printed!") // This part gets ignored
+```
+  * Block comments a.k.a multi-line using `/* */`
+    * E.g.
+```
+/*
+This is ignored.
+This is also ignored. 
+fmt.Println("This WON'T print!")
+*/
+```
