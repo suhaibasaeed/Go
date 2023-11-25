@@ -48,3 +48,21 @@ func main () {
 }
 
 ```
+### Main Function
+* To define a function in Go use the `func` keyword
+  * Followed by name of function E.g. main
+  * After this we need a set of parentheses i.e. `()`
+  * Any code inside the function needs to be within set of **curly braces** i.e. {}
+    * Also needs to be **indented**
+  * E.g.
+```
+func main () {
+    fmt.Println("Hello World") 
+}
+```
+* Having a main function inside `main.go` is special to Go
+  * Created executable when compiled
+  * Also starts executing code in here as starting point
+    * Same as python
+* Defining a function doesn't call it
+  * Same as python
