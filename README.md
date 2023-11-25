@@ -66,3 +66,25 @@ func main () {
     * Same as python
 * Defining a function doesn't call it
   * Same as python
+
+### Importing Multiple Packages
+* There are two main ways to import multiple palcage
+  * USe multiple import statements
+  * Or use single statement with **parentheses**
+    * E.g.
+```
+import (
+  "package1"
+  "package2"
+)
+```
+* We can also give a package an alias
+  * Then refer to this instead inside code
+  * As we do in python using `as` keyword
+  * E.g.
+```
+import (
+  p1 "package1"
+  "package2"
+)
+```
