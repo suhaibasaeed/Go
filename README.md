@@ -165,9 +165,28 @@ fmt.Println(funFact)
   * 2 types for floating-point
   * 11 types for integer
   * 2 types for complex 
+* The different types dictate **how much memory** number takes to store
+  * As well as **how many binary digits** it uses to store it
+    * Less bits means fewer possible values i.e. min/max values
+  * Better to use types with **smaller range** if possible
+* Integers can be **signed** or **unsigned**
+  * Unsigned can **only be positive**
+    * Minimum value is 0
+  * Signed can be either -ve or +ve
+    * Max value lower than unsigned for same no. of bits vs unsigned
+* Boolean type only uses **1 bit**
+* Numeric Data Types Table
 
+![Numeric Types](codecademy/images/numeric_types.png)
+
+* Floats and complex no. **don't** have max. or min. numbers
+* Floats can be `float32` or `float64`
+  * Difference is how much data used to **ensure value's precision**
 
 ### What is a Variable
 * Variables in Go are defined using **var keyword**
   * They also need their **type defined**
   * E.g. `var neighbourUp bool`
+* Other examples
+  * `var lengthOfSong uint16` - Unsigned 16-bit integer
+  * `var songRating float32` - 32-bit float
