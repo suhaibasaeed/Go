@@ -121,3 +121,17 @@ func Println(a ...interface{}) (n int, err error)
     appended. It returns the number of bytes written and any write error
     encountered.
 ```
+## Learn Go - Variables and Types
+
+### Literals
+* Literals are essentially a value of any type written in code
+  * E.g. `2235`
+* We can do normal arithmetic on integer literals
+  * Or add strings together
+  * **But we can't multiply string and int like we can in python**
+    * i.e. print string x no. of times
+
+### What is a Variable
+* Variables in Go are defined using **var keyword**
+  * They also need their **type defined**
+  * E.g. `var neighbourUp bool`
