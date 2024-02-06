@@ -187,6 +187,16 @@ fmt.Println(funFact)
 * Variables in Go are defined using **var keyword**
   * They also need their **type defined**
   * E.g. `var neighbourUp bool`
+* Should also be in **camelCase**
 * Other examples
   * `var lengthOfSong uint16` - Unsigned 16-bit integer
   * `var songRating float32` - 32-bit float
+
+### Reading Go Errors
+* When Go compiler raises error code cannot be turned into binary
+  * Thus code can't be run
+* An example of an error is when we define variable but **don't use it**
+  * E.g. `./main.go:4:7: numberWheels declared and not used`
+    * Unused variables are waste of space
+
+
