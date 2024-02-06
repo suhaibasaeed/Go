@@ -245,4 +245,43 @@ var radiumInGroundWater = 4.521
 var daysSinceLastWorkplaceCatastrophe = 0
 var externalMessage = "Everything is normal. Keep calm and carry on."
 ```
-* 
+
+### Default int Type
+* We can assign an integer `uint` or `int` type
+* If computer architecture is 32-bit it will use int32/uint32
+  * If 64-bit then int64/uint64
+* Usually recommended to use either `uint` or `int`
+  * Instead of specifying no. of bits
+  * E.g.
+```
+var timesWeWereFooled int
+var foolishGamesPlayed uint
+```
+* When we use **value inferring** with integers it defaults to `int`
+  * E.g. `consolationPrizes := 2`
+
+### Updating Variables
+* As with Python we can update variables in Go
+  * In below e.g. `basketTotal` var defaults to 0
+    * Wouldn't be the case in Python
+```
+var basketTotal float64
+carrotPrice := 0.75
+
+basketTotal = basketTotal + carrotPrice
+fmt.Println(basketTotal) // Prints: 0.75
+```
+* Same as Python we can also use `+=` above instead
+  * Also works on strings
+  * Others operators are: `*=`, `/=` and `-=`
+
+### Multiple Variable Declaration
+* We can declare multiple variables in **single line**
+  * E.g.
+```
+var part1, part2 string
+part1 = "To be..."
+part2 = "Not to be..."
+```
+* Same goes for inferring also 
+  * E.g. `quote, fact := "Bears, Beets, Battlestar Galactica", true`
