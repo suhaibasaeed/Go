@@ -211,4 +211,38 @@ ipAddress = "192.168.1.2"
 * **Strings can't have single quotes**
 
 ### Zero Values
+* Variables of different types have **default values**
+  * i.e. String defaults to "", int to 0 and boolean to false
+  * E.g.
+```
+var classTime uint32
+var averageGrade float32
+var teacherName string
+var isPassFail bool
+
+fmt.Println(classTime) // Prints 0
+fmt.Println(averageGrade) // Prints 0
+fmt.Println(teacherName) // Doesn't print anything
+fmt.Println(isPassFail) // Prints false
+```
+
+### Inferring Values
+* In Go we **don't** have to **specify variable type** if we use `:=` operator
+  * Called short decleration operator
+  * We can use this if we know what variable should hold when creating it
+* E.g.
+```
+nuclearMeltdownOccurring := true
+radiumInGroundWater := 4.521 //Type float64
+daysSinceLastWorkplaceCatastrophe := 0 //Type int32/int64
+externalMessage := "Everything is normal. Keep calm and carry on."
+```
+* Notice we don't need to use `var` keyword 
+* The long way to do the above is:
+```
+var nuclearMeltdownOccurring = true
+var radiumInGroundWater = 4.521
+var daysSinceLastWorkplaceCatastrophe = 0
+var externalMessage = "Everything is normal. Keep calm and carry on."
+```
 * 
