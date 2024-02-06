@@ -199,4 +199,12 @@ fmt.Println(funFact)
   * E.g. `./main.go:4:7: numberWheels declared and not used`
     * Unused variables are waste of space
 
-
+### Assigning Variables
+* After defining a variable we can assign it a value
+  * E.g. 
+```
+var ipAddress
+ipAddress = "192.168.1.2"
+```
+* We could also **define** and **assign** a value in one line
+  * E.g. `var kilometersToMars int32 = 62100000`
