@@ -121,14 +121,15 @@ func Println(a ...interface{}) (n int, err error)
     appended. It returns the number of bytes written and any write error
     encountered.
 ```
-## Variables & Types
+## Learn Go - Variables & Types
 ### Literals
 * Literals a.k.a values can be anything from number or text
   * Essentially unnamed things
     * i.e. not assigned to variables
-* As with python we can do arithmetic with literals
-  * Integers to be specific
-* E.g. `fmt.Println(20 * 3)`
+* We can do normal arithmetic on integer literals
+  * Or add strings together
+  * **But we can't multiply string and int like we can in python**
+    * i.e. print string x no. of times
 
 ### Constants
 * One type of named values
@@ -145,15 +146,26 @@ fmt.Println(funFact)
 * We must use **camelCase** or **PascalCase** for constants
 
 ### Data Types
-* ## Learn Go - Variables and Types
+* Programming languages like Go store data as binary numbers in memory
+* Go has **3 basic data types** for **numbers**
+  1. **Integers** - `int`
+     * Can be positive or negative
+     * E.g. `22` and `-1500`
+  2. **Floating-point** - `float`
+     * Numbers with a decimal point
+     * Can also be positive or negative
+     * E.g. `1458.2` and `-1900.001`
+  3. **Complex Numbers** - `complex`
+     * Can also be +ve or -ve
+     * Used in 2D coordinates or calculation include sq roots
+     * E.g. `3i` and `-14 - -.05i`
 
-### Literals
-* Literals are essentially a value of any type written in code
-  * E.g. `2235`
-* We can do normal arithmetic on integer literals
-  * Or add strings together
-  * **But we can't multiply string and int like we can in python**
-    * i.e. print string x no. of times
+### Basic Numeric Types in Go
+* There are 15 ways to describe a number in Go
+  * 2 types for floating-point
+  * 11 types for integer
+  * 2 types for complex 
+
 
 ### What is a Variable
 * Variables in Go are defined using **var keyword**
