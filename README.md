@@ -121,7 +121,31 @@ func Println(a ...interface{}) (n int, err error)
     appended. It returns the number of bytes written and any write error
     encountered.
 ```
-## Learn Go - Variables and Types
+## Variables & Types
+### Literals
+* Literals a.k.a values can be anything from number or text
+  * Essentially unnamed things
+    * i.e. not assigned to variables
+* As with python we can do arithmetic with literals
+  * Integers to be specific
+* E.g. `fmt.Println(20 * 3)`
+
+### Constants
+* One type of named values
+* Can't be updated while program running
+  * Helps conveys intent of keeping consistent value
+* We use `const` keyword to create constant
+* E.g.
+```
+const funFact = "Hummingbirds' wings can beat up to 200 times a second."
+
+fmt.Println("Did you know?")
+fmt.Println(funFact)
+```
+* We must use **camelCase** or **PascalCase** for constants
+
+### Data Types
+* ## Learn Go - Variables and Types
 
 ### Literals
 * Literals are essentially a value of any type written in code
