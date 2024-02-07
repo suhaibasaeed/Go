@@ -596,3 +596,6 @@ func main() {
   fmt.Println(rand.Intn(100))
 }
 ```
+* Essentially this line will give us random number: `rand.seed(time.Now().UnixNano())`
+
+## 
