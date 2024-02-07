@@ -286,3 +286,34 @@ part2 = "Not to be..."
 ```
 * Same goes for inferring also 
   * E.g. `quote, fact := "Bears, Beets, Battlestar Galactica", true`
+
+## Learn Go: FMT Package
+
+### The fmt Package
+* fmt is one of Go's **core packages**
+  * Also has utilities that help us **format** data
+    * Apart from printing things
+* Other supported methods
+  * `fmt.Print()`
+  * `fmt.Printf()`
+  * The below format but doesn't print anything to the console
+  * `fmt.Sprint()`
+  * `fmt.Sprintln()`
+  * `fmt.Sprintf()`
+  * To get user input
+    * * `fmt.Scan()`
+
+### The Print Method
+* The `fmt.Println` method does some formatting for us by default
+  * It adds a **space** to the arguments inside it and adds **line break** at the end
+* Sometimes we may not want this behaviour
+  * i.e don't want the extra space or the line break
+* E.g.
+```
+fmt.Print("The answer is", ": ")
+fmt.Print("12")
+//Prints:
+//The answer is: 12
+```
+
+### The Printf Method
