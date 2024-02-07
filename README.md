@@ -417,3 +417,29 @@ fmt.Printf("I'm %v %v", response1, response2)
 * The `&` character used references **addresses** as `fmt.Scan()` expects these
   * Without it the program will not actually ask for any input
 
+## Conditionals
+
+### If Statement
+* Our condition can be within parenthesis but not mandatory
+* Code to be executed if condition is true needs to be within **curly braces**
+  * No colon needed like Python
+* Booleans in Go are **all lowercase**. E.g. `true`
+* E.g.
+```
+alarmRinging := true
+if alarmRinging {
+  fmt.Println("Turn off the alarm!!") 
+}
+```
+
+### The Else Statement
+* Else block will also need to have it's code in curly braces
+  * E.g.
+```
+isHungry := false
+if isHungry {
+  fmt.Println("Eat the cookie") 
+} else {
+  fmt.Println("Step away from the cookie...")
+}
+```
