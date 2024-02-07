@@ -533,3 +533,66 @@ default:
 }
 // Prints: We have sweaters in S, M, L, and XL.
 ```
+
+### Scoped Short Decleration Statement
+* We can **declare variables** within an if or switch statement
+  * Done using `:=` straight after `if` keyword
+  * But before the comparison
+  * Separated by `;`
+  * E.g.
+```
+x := 8
+y := 9
+if product := x * y; product > 60 {
+  fmt.Println(product, "  is greater than 60")
+}
+```
+* E.g. below shows how to do it within switch statement
+```
+switch season := "summer" ; season {
+case "summer":
+  fmt.Println("Go out and enjoy the sun!")
+}
+```
+* **Variable defined like this are only valid within the block**
+  * i.e. Trying to use these after outside of the block will throw an error
+
+### Randomising
+* Go has a `math/rand` library which can generate random numbers for us
+  * E.g. of usage
+    * below should print a random number from 0 to 99 but it will always print 81
+```
+import (
+  "math/rand"
+  "fmt"
+)
+
+func main() {
+  fmt.Println(rand.Intn(100))
+}
+```
+
+### Seeding
+* The reason the above code did not give us random number was due to how Go **chooses starting no.**
+  * i.e. starting point for generating random number  
+  * Known as seed number which defaults to 1
+* To actually get random number we need to pass in **unique seed number**
+  * To get seed no. we use `rand.Seed()` method
+  * One way to do this is to use the **time** via `time` library
+    * As it's always different
+    * E.g.
+```
+package main
+
+import (
+  "fmt"
+  "math/rand"
+  "time"
+)
+
+func main() {
+  // Gives us time difference since 1 Jan 1970 UTC in us thus different seed no.
+  rand.Seed(time.Now().UnixNano())
+  fmt.Println(rand.Intn(100))
+}
+```
