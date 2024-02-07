@@ -499,6 +499,7 @@ if position == 1 {
 * `switch` is followed by **variable** the conditional is looking at 
 * `case` is followed by **value** it should be equal to and colon
   * Then code that should be run for condition is **indented below**
+  * Can also use comparsion operators
 * Finally the `default` keyword is used at the end like an **else**
 * E.g.
   * Using else if
