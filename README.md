@@ -304,7 +304,7 @@ part2 = "Not to be..."
     * * `fmt.Scan()`
 
 ### The Print Method
-* The `fmt.Println` method does some formatting for us by default
+* The `fmt.Println()` method does some formatting for us by default
   * It adds a **space** to the arguments inside it and adds **line break** at the end
 * Sometimes we may not want this behaviour
   * i.e don't want the extra space or the line break
@@ -312,8 +312,54 @@ part2 = "Not to be..."
 ```
 fmt.Print("The answer is", ": ")
 fmt.Print("12")
-//Prints:
-//The answer is: 12
+// Prints: The answer is: 12
 ```
 
 ### The Printf Method
+* The `fmt.Printf()` method allows us to do **string interpolation**
+  * Like f-strings
+* Example
+  * `%v` part is called **verb**
+    * Specific letter after `%` tells it what exactly to put in placeholder
+```
+selection1 := "soup"
+selection2 := "salad"
+fmt.Printf("Do I want %v or %v?", selection1, selection2)
+// Prints: Do I want soup or salad?
+```
+
+### Different Verbs
+* Another verb is `%T` which prints out **type** of 2nd argument
+  * E.g.
+```
+specialNum := 42
+fmt.Printf("This value's type is %T.", specialNum)
+// Prints: This value's type is int.
+
+quote := "To do or not to do"
+fmt.Printf("This value's type is %T.", quote)
+// Prints: This value's type is string.
+```
+* The `%d` verb prints out a number in string format
+  * E.g.
+```
+votingAge := 18
+fmt.Printf("You must be %d years old to vote.", votingAge)
+// Prints: You must be 18 years old to vote. 
+```
+* The `%f` verb to print out a float in string format
+  * E.g.
+```
+gpa := 3.8
+fmt.Printf("You're averaging: %f.", gpa)
+// Prints: You're averaging 3.800000.
+```
+* We can also control **number of decimals** in float
+  * E.g.
+```
+gpa := 3.8
+fmt.Printf("You're averaging: %.2f.", gpa)
+// Prints: You're averaging 3.80.
+```
+  
+
