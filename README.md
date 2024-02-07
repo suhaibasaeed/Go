@@ -446,3 +446,52 @@ if isHungry {
 
 ### Comparison Operators
 * Comparison operators work in the exact same way as Python
+
+### Logical Operators
+* Different to Python
+  * Not is `!`
+  * And is `&&`
+  * Or is `||`
+* E.g.
+```
+if storeLights == "on" && doorsOpen {
+  fmt.Println("You can enter the store!")
+} 
+```
+
+### Not Operator
+* Essentially reverses value of a boolean
+  * E.g.
+```
+bored := true
+fmt.Println(!bored) // Prints false
+
+tired := false;
+fmt.Println(!tired) // Prints true
+```
+* We can also add them to if statements
+  * E.g.
+```
+if !readyToGo {
+		fmt.Println("Start the car!")
+}
+```
+
+### Else if Statement
+* Instead of elif in Python in Go we use `else if`
+  * E.g.
+```
+position := 2
+
+if position == 1 {
+  fmt.Println("You won the gold!")
+} else if position == 2 {
+  fmt.Println("You got the silver medal.")
+} else if position == 3 {
+  fmt.Println("Great job on bronze.")
+} else {
+  fmt.Println("Sorry, better luck next time?")
+}
+```
+
+### 
