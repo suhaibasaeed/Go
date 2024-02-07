@@ -443,3 +443,6 @@ if isHungry {
   fmt.Println("Step away from the cookie...")
 }
 ```
+
+### Comparison Operators
+* Comparison operators work in the exact same way as Python
