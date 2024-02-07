@@ -363,4 +363,57 @@ fmt.Printf("You're averaging: %.2f.", gpa)
 ```
   
 ### Sprint and Sprintln
-* 
+* These methods allow us to format strings **without printing** them
+  * E.g.
+```
+grade := "100"
+compliment := "Great job!"
+teacherSays := fmt.Sprint("You scored a ", grade, " on the test! ", compliment)
+
+fmt.Print(teacherSays)
+// Prints: You scored a 100 on the test! Great job!
+```
+* As before `Sprintln` adds spacing and a new line
+  * E.g.
+```
+quote = fmt.Sprintln("Look ma,", "no spaces!")
+fmt.Print(quote) // Prints Look ma, no spaces!
+```
+
+### Sprintf Method
+* Method a bit like using python f-string without print statement
+  * Let's us do interpolation
+* Uses same verbs as Printf
+```
+correctAns := "A"
+answer := fmt.Sprintf("And the correct answer is… %v!", correctAns)
+
+fmt.Print(answer) // Prints: And the correct answer is… A!
+```
+
+### Getting User Input
+* We can use the `fmt.Scan` method to get input from user
+  * E.g. below would take in single word from user
+    * If we entered 2 words separated by space only 1st one taken
+```
+fmt.Println("How are you doing?") 
+
+var response string 
+fmt.Scan(&response)
+
+fmt.Printf("I'm %v.", response) 
+```
+* Below example takes 2 arguments i.e. 2 words
+```
+fmt.Println("How are you doing?") 
+
+var response1 string 
+var response2 string 
+fmt.Scan(&response1)
+fmt.Scan(&response2)
+
+fmt.Printf("I'm %v %v", response1, response2)
+```
+* The `&` character used references **addresses** as `fmt.Scan()` expects these
+  * Without it the program will not actually ask for any input
+
