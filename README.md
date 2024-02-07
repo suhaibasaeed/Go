@@ -494,4 +494,42 @@ if position == 1 {
 }
 ```
 
-### 
+### Switch Statement
+* Instead of the verbosity of writing multiple else if statements we can use `switch` and `match`
+* `switch` is followed by **variable** the conditional is looking at 
+* `case` is followed by **value** it should be equal to and colon
+  * Then code that should be run for condition is **indented below**
+* Finally the `default` keyword is used at the end like an **else**
+* E.g.
+  * Using else if
+```
+clothingChoice := "sweater"
+
+if clothingChoice == "shirt" {
+  fmt.Println("We have shirts in S and M only.")
+} else if clothingChoice == "polos" {
+  fmt.Println("We have polos in M, L, and XL.")
+} else if clothingChoice == "sweater" {
+  fmt.Println("We have sweaters in S, M, L, and XL.")
+} else {
+  fmt.Println("Sorry, we don't carry that.")
+}
+```
+* Same example now using switch
+```
+clothingChoice := "sweater"
+
+switch clothingChoice {
+case "shirt":
+  fmt.Println("We have shirts in S and M only.")
+case "polos":
+  fmt.Println("We have polos in M, L, and XL.")
+case "sweater":
+  fmt.Println("We have sweaters in S, M, L, and XL.")
+case "jackets":
+  fmt.Println("We have jackets in all sizes.")
+default:
+  fmt.Println("Sorry, we don't carry that")
+}
+// Prints: We have sweaters in S, M, L, and XL.
+```
