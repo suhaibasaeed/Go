@@ -1,0 +1,14 @@
+package main
+
+import "fmt"
+
+func main() {
+	star := "Polaris"
+	
+	// Create pointer that points at star addr
+  starAddress := &star
+  
+  fmt.Println("The address of star is", starAddress)
+	
+  
+}

@@ -694,4 +694,49 @@ Taxes Calculated!
 ## Addresses & Pointers
 
 ### The Point of Pointers and Addresses
-*
+* Go is **pass-by-value** language
+  * Functions are passed **value** of argument
+    * Not argument itself
+    * Means changes that happen in function stay within function
+* Analogy of a teacher with a worksheet
+  * She has original copy but hands copies to students
+  * Student's don't write/change the original
+* We can change values from **different scopes** using below:
+  * Addresses
+  * Pointers
+  * Dereferencing
+
+### Addresses
+* When we declare a variable in Go the computer sets aside **space in memory** to store value
+  * Called **address** and is **unique** numerical value
+* When we **use variable** we get **value stored at address**
+  * Use the `&` operator to print variable' address
+    * Followed by name of variable
+    * Gives us value in Hex
+```
+x := "My very first address"
+fmt.Println(&x) // Prints 0x414020
+```
+
+### Pointers
+* Pointers are **variables** that **store addresses**
+  * `*` operator used to signify variable stores address
+  * E.g. `var pointerForInt *int`
+    * We specify address of variable is holding an `int`
+* Full example
+```
+var pointerForInt *int
+
+minutes := 525600
+
+pointerForInt = &minutes
+
+fmt.Println(pointerForInt) // Prints 0xc000018038
+```
+* Another way we can declare a pointer is via inferring
+  * E.g.
+```
+minutes := 55
+
+pointerForInt := &minutes
+```
