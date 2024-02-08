@@ -690,4 +690,8 @@ func calculateTaxes(revenue, deductions, credits float64) float64 {
 Calculating Taxes
 Taxes Calculated!
 ```
+
+## Addresses & Pointers
+
+### The Point of Pointers and Addresses
 *
