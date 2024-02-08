@@ -620,4 +620,41 @@ func doubleNum(num int) int {
 * There are 3 scopes for variables inside Go as with Python
   * Global
   * Within function
-  * Within main function 
+  * Within main function
+
+### Returning Values from Functions
+* Works in similar way to Python
+
+### Using Function Parameters
+* As with python we can call a function with some arguments
+  * Then these parameters are used within the function
+* If multiple parameters have the **same type** we don't need to specify each time
+  * E.g.
+```
+func multiplier(x, y int32) int32 {
+  return x * y
+}
+```
+
+### Returning Multiple Values
+* As in Python we can also return multiple values in a function
+  * We can then unpack them in exactly the same way also
+    * As well as being able to use special variable `_`
+  * E.g.
+```
+package main
+
+import "fmt"
+
+func getLengthOfCentralPark() (int32, string) {
+	var lengthInBlocks int32
+	lengthInBlocks = 51
+	unit := "m"
+	return lengthInBlocks, unit
+}
+
+func main() {
+	len, unit := getLengthOfCentralPark()
+	fmt.Print(len, unit)
+}
+```
