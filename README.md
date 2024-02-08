@@ -755,3 +755,34 @@ pointerForStr := &lyrics
 
 fmt.Println(lyrics) // Prints: Journeys to plan
 ```
+
+### Changing Values in Different Scopes
+* In Go when we call function with value as input we don't pass actual address of variable
+  * But just it's value
+* We have below e.g. where x does not change
+```
+func addHundred(num int) {
+  num += 100
+}
+
+func main() {
+  x := 1
+  addHundred(x)
+  fmt.Println(x) // Prints 1
+}
+```
+* To make sure x changes we would have to do this
+  * `addHundred` func now takes in pointer as parameter
+  * We then reference it and give it new value in memory address
+  * In `main` func we also need to give pointer using address via `&` operator
+```
+func addHundred (numPtr *int) {
+  *numPtr += 100
+}
+
+func main() {
+  x := 1
+  addHundred(&x)
+  fmt.Println(x) // Prints 101
+}
+```
