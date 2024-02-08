@@ -740,3 +740,18 @@ minutes := 55
 
 pointerForInt := &minutes
 ```
+
+### Dereferencing
+* We can use this if we want **address** to store **different value**
+  * i.e. change what's stored there
+* A.k.a indirecting
+* We still need to use `*` operator
+  * E.g.
+```
+lyrics := "Moments so dear" 
+pointerForStr := &lyrics
+// use dereferencing to point to address in memory and assign new value
+*pointerForStr = "Journeys to plan" 
+
+fmt.Println(lyrics) // Prints: Journeys to plan
+```
