@@ -658,3 +658,36 @@ func main() {
 	fmt.Print(len, unit)
 }
 ```
+### Deferring Resolution
+* We can use the `defer` keyword to do something at the end of a function call
+  * Usually call another function
+* Useful if we have **multiple return statements** in code
+  * As any code aftrer a return statement is not run
+* Feature can be used logging and writing to file etc.
+  * Or doing things like disconnecting from DB aftrer we run a query
+* Typically added at the top of a function definition
+* E.g.
+```
+func calculateTaxes(revenue, deductions, credits float64) float64 {
+  defer fmt.Println("Taxes Calculated!")
+  taxRate := .06143
+  fmt.Println("Calculating Taxes")
+
+  if deductions == 0 || credits == 0 {
+    return revenue * taxRate
+  }
+  
+
+  taxValue := (revenue - (deductions * credits)) * taxRate
+  if taxValue >= 0 {
+    return taxValue
+  } else {
+    return 0
+  }
+}
+
+// Output
+Calculating Taxes
+Taxes Calculated!
+```
+*
