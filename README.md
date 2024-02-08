@@ -599,4 +599,25 @@ func main() {
 ```
 * Essentially this line will give us random number: `rand.seed(time.Now().UnixNano())`
 
-## 
+## Functions
+
+### What is a function
+* In Go we use `func` keyword to define a function
+  * Type hints are **mandatory** unlike python
+  * E.g. below shows function with input and output being ints 
+    * Code also needs to be in curly braces
+```
+func doubleNum(num int) int {
+  return num * 2
+}
+```
+* `main` function **doesn't** have to be called as compiler already knows to do it
+  * Unlike Python
+* A function is called in the exact same way as python
+  * E.g. `fmt.Println(doubleNum(x)) // Prints: 10`
+
+### Scope
+* There are 3 scopes for variables inside Go as with Python
+  * Global
+  * Within function
+  * Within main function 
