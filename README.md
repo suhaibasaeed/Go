@@ -786,3 +786,116 @@ func main() {
   fmt.Println(x) // Prints 101
 }
 ```
+
+## Loops
+
+### Classic For Loop
+* A for loop in Go has **3 components**
+  * 1st part is where we define **starting value** for loop variable
+  * 2nd is the **condition** that needs to be true
+  * 3rd is what to do **after each iteration**
+    * i.e. increment loop variable
+* E.g.
+```
+afor number := 0; number < 5; number++ {
+  fmt.Print(number, " ")
+}
+// Output: 0 1 2 3 4
+```
+* For loop in Go is unlike for loop in Python
+
+### For as a While Loop
+* Sometimes we don't know how many iterations of loop we need
+  * Here we use **indefinite loops**
+    * Repeat whilst condition is true
+* Go uses `for` statement for these types of loop too
+  * But there are 2 main differences
+    1. Loop variable needs to defined **outside of block**
+    2. Update to loop variable after each iteration needs to be within block
+       * Unlike in definite loop
+* E.g.
+  * Output of below and above example are the same
+```
+number := 0 // Initialize a variable to be used inside the loop
+for number < 5 {
+  fmt.Println(number)
+  number++ // Update the variable being used
+}
+```
+
+### Infinite Loop
+* These are usually dangerous but can also be useful
+  * In case of something like web server that needs to run always
+    * But we can break out of the loop
+* E.g.
+```
+for {
+  // Loop body logic
+  // This repeats forever
+}
+// This is never reached
+```
+
+### Break and Continue
+* As with python we can use these two keywords to break out of a loop
+  * Or current iteration
+* Example of `break` keyword
+```
+// Init slice of strings - dynamically sized flexible view into array elements
+animals := []string{"Cat", "Dog", "Fish", "Turtle"}
+for index := 0; index < len(animals); index++ {
+  if animals[index] == "Dog" {
+    fmt.Println("Found the perfect animal!")
+    break // Stop searching the array
+  }
+}
+```
+* Example of `continue` keyword
+```
+jellybeans := []string{"green", "blue", "yellow", "red", "green", "yellow", "red"}
+for index := 0; index < len(jellybeans); index++ {
+  if jellybeans[index] == "green" {
+    continue
+  }
+  fmt.Println("You ate the", jellybeans[index], "jellybean!")
+}
+```
+
+### Looping and Arrays
+* We can use the `range` keyword with maps and arrays
+  * To loop through their elements
+  * E.g. below shows usage
+    * `range letters` gives us 2 things back always
+      * array index and actual element
+      * So below syntax needed
+```
+letters := []string{"A", "B", "C", "D"}
+for index, value := range letters {
+  fmt.Println("Index:", index, "Value:", value)
+}
+```
+* Output:
+```
+Index: 0 Value: A
+Index: 1 Value: B
+Index: 2 Value: C
+Index: 3 Value: D
+```
+* For maps the syntax is the same but range gives `key, value` instead
+  * E.g.
+```
+addressBook := map[string]string{
+  "John": "12 Main St",
+  "Janet": "56 Pleasant St",
+  "Jordan": "88 Liberty Ln",
+}
+for key, value := range addressBook {
+  fmt.Println("Name:", key, "Address:", value)
+}
+```
+* Output:
+```
+Name: John Address: 12 Main St
+Name: Janet Address: 56 Pleasant St
+Name: Jordan Address: 88 Liberty Ln
+```
