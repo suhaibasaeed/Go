@@ -797,7 +797,7 @@ func main() {
     * i.e. increment loop variable
 * E.g.
 ```
-afor number := 0; number < 5; number++ {
+for number := 0; number < 5; number++ {
   fmt.Print(number, " ")
 }
 // Output: 0 1 2 3 4
