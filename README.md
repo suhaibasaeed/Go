@@ -899,3 +899,27 @@ Name: John Address: 12 Main St
 Name: Janet Address: 56 Pleasant St
 Name: Jordan Address: 88 Liberty Ln
 ```
+
+## Arrays & Slices
+
+### Intro to Arrays
+* **Fixed size** collection of data elements **of same type**
+  * Unlike python where they can be mixed and variable size
+  * We can still use indexing to access them
+
+### Array Creation
+* Before using an array we need to **declare** and **name** it
+* When a variable is declared in Go compilor **finds space** in **memory** for it
+  * Associates name with variable too
+  * Issue is that compilor needs to find enough space for several occurances of data type
+  * Thus we need to **provide no. of elements**
+* Once declared the no. of elements **can't be changed**
+  * Workaround is to **declare new array**
+* Array's can be created with inital set of elements
+  * But not mandatory
+  * E.g. below defines empty array with 4 elements of type `int`
+```
+var playerScores [4]int
+fmt.Println(playerScores)
+// [0 0 0 0]
+```
