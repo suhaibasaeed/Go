@@ -957,5 +957,52 @@ fmt.Println(secondStudent)
 ```
 myArray := [4]int{10, 24, 5, 47}
 myArray[2] = 33
+```
 
+### Intro to Slices
+* Slices are similar type to arrays but **can change size**
+* There are different ways to create slices
+  * E.g.
+```
+// Each of the following creates an empty slice
+var numberSlice []int
+stringSlice := []string{}
+
+// The following creates a slice with elements
+names := []string{"Kathryn", "Martin", "Sasha", "Steven"}
+```
+* We can also create a slice based on existing array
+* **Updating an element in a slice also updates the original array**
+* E.g.
+```
+array := [5]int{2, 5, 7, 1, 3}
+// This is a slice of the whole array
+sliceVersion := array[:]
+fmt.Println(sliceVersion)
+// prints
+// [2 5 7 1 3]
+
+// Change slide element
+sliceVersion[1] = 6
+fmt.Println(array)
+// prints - original array also changed
+// [2 6 7 1 3]
+```
+* As with python we can use slicing to get **sub-set** of array
+  * E.g.
+```
+partialSlice := array[2:5]
+fmt.Println(partialSlice)
+// [7 1 3]
+```
+* Unlike arrays we **don't** need to **specify no. of elements**
+* We can access elements normally via indexes
+  * E.g.
+```
+var names = []string{"Kathryn", "Martin", "Sasha", "Steven"}
+fmt.Println(names[1])
+// Martin
+names[3] = "Bishop"
+fmt.Println(names[3])
+// Bishop
 ```
