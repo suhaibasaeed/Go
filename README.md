@@ -923,3 +923,39 @@ var playerScores [4]int
 fmt.Println(playerScores)
 // [0 0 0 0]
 ```
+
+### Array Creation with Elements
+* To give an array elements at creation we need to use square brackets {}
+  * E.g. `triangleSides := [3]int{15, 26, 30}`
+* We could also make the compiler **dynamically determine array length**
+  * Using ellipsis syntax i.e. `...`
+  * E.g. `triangleAngles := [...]int{30, 60, 90}`
+
+
+### Access Array Values with Indices
+* As with Python we can access individual elements via it's index
+  * But unlike Python we can't use a negative index
+   E.g.
+```
+students = [3]string{"Jill", "Fred", "Sasha"}
+// Access the first element of the array
+fmt.Println(students[0])
+// Output: Jill
+// Access the third element of the array
+fmt.Println(students[2])
+// Output: Sasha
+// Store the second element into a variable
+secondStudent := students[1]
+// Print it
+fmt.Println(secondStudent)
+// Output: Fred
+```
+
+### Modifying Array Values
+* As with Python we can change array values via index
+  * E.g.
+```
+myArray := [4]int{10, 24, 5, 47}
+myArray[2] = 33
+
+```
