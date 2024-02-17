@@ -1287,3 +1287,34 @@ points[1].y = 16
 
 fmt.Println(points[1]) // Output will be {8, 16}
 ```
+
+### Nested Structs
+* We can have fields in a struct that **reference other structs**
+  * E.g.
+```go
+type Name struct{
+  firstName string
+  lastName string
+}
+
+type Employee struct{
+  name Name // references Name struct above
+  age int
+  title string
+}
+// Create instance of employee
+carl := Employee{Name{"Carl", "Carlson"}, 32, "Engineer"}
+fmt.Println(carl.name.lastName) // Output will be "Carlson"
+```
+* We could access the `firstName` and `lastName` fields directly from `Employee` struct
+  * But we'd have to define struct like this with anonymous field
+```go
+type Employee struct{
+  Name
+  age int
+  title string
+}
+```
+  * Here we could now do this: `fmt.Println(carl.firstName)` instead of the above
+  * But we couldn't have 2 anonymous fields of the same type
+    * i.e. of `Name` type
