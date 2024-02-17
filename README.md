@@ -1207,3 +1207,33 @@ fmt.Println(john.firstName)
 ```
 * We can change a field's value within a struct
   * E.g. `john.age = 15`
+
+### Functions that Access Struct
+* We can use functions to do operations on structs
+  * E.g. struct representing shape has functions to compute area/perimeter
+* Example below is struct representing rectangle
+```go
+type Rectangle struct {
+  length float32
+  width  float32
+}
+```
+  * We can then have a function that computes area of rectangle
+    * `(rectangle Rectangle)` means func belong to `Rectangle` struct
+    * `area()` is name of function
+```go
+func (rectangle Rectangle) area() float32 {
+  return rectangle.length * rectangle.width
+}
+rect := Rectangle{1, 2}
+rect.area()
+```
+* **Functions associated with struct are written outside it**
+  * Unlike Python classes and methods
+* Defining func in this was we only pass in **copy of rectangle**
+  * Function can't change value of field
+  * If we wanted func to **modify struct field's value** we need to pass **pointer into struct**
+
+### Pointers to a Struct
+* Without a pointer only copies of variables are passed into function
+  * Therefore using one allows us to modify original values
