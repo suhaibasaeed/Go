@@ -1156,3 +1156,13 @@ if status {
     * E.g. `delete(contacts, "Gary")`
 * Trying to delete a key that **doesn't exist** has no effect
   * i.e. no error or exception thrown unlike Python
+
+
+### Extra
+* To format go code use `gofmt -w fileName`
+  * E.g. `gofmt -w test.go`
+
+## Structs in Go
+
+### Introduction
+* 
