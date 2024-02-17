@@ -1088,3 +1088,6 @@ func changeFirst(slice []int, value int) {
     }
 }
 ```
+* **Slices act as pointers**
+
+## Go Maps
