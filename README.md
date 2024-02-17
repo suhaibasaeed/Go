@@ -1006,3 +1006,43 @@ names[3] = "Bishop"
 fmt.Println(names[3])
 // Bishop
 ```
+
+### Length and Capacity
+* As with python we can use the `len()` function get the length of array/slice
+  * E.g.
+```
+favoriteThings := [2]string{"Raindrops on Roses", "Whiskers on Kittens"}
+fmt.Println(len(favoriteThings))
+// 2
+```
+* Slices also have concept of **capacity** as they are re-sizable
+  * Defines as max no. of elements it can hold before **needing to re-size**
+  * We use `cap()` function to figure out capacity
+  * E.g. below shows how capacity of slice doubles when we try to append element to it
+    * Slice is already at **full capacity**
+```
+slice := []string{"Fido", "Fifi", "FruFru"}
+// The slice begins at length 3 and capacity 3
+fmt.Println(slice, len(slice), cap(slice))
+// [Fido Fifi FruFru] 3 3
+slice = append(slice, "FroFro")
+// After appending an element when the slice is at capacity
+// The slice will double in capacity, but increase its length by 1
+fmt.Println(slice, len(slice), cap(slice))
+// [Fido Fifi FruFru FroFro] 4 6
+```
+* **Slices can still have elements added if they are at full capacity**
+
+### Append to Slices
+* We can use the `append()` function to add elements to slices
+  * Syntax is slice name then element to add
+  * We need to **re-assign** slice for it to work
+  * Slice re-sizes automatically
+  * E.g.
+```
+books := []string{"Tom Sawyer", "Of Mice and Men"}
+books = append(books, "Frankenstein")
+books = append(books, "Dracula")
+fmt.Println(books)
+
+```
