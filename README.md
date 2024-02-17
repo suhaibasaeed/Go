@@ -1165,4 +1165,45 @@ if status {
 ## Structs in Go
 
 ### Introduction
-* 
+* Somewhat similar to a Python class where we can have **different types together**
+
+### Defining a Struct
+* We define a struct via the `type` keyword
+  * Syntax: `type StructName Struct`
+  * Once defines we can then use it as a **type** in our code
+  * E.g.
+```go
+type Point struct {
+  x int
+  y int
+}
+var firstPoint Point
+```
+
+### Creating Instance of a Struct
+* To use a struct defined we create **instance of it**
+  * E.g. `p1 := Point{x: 10, y: 12}`
+* We can omit single or multiple fields when creating instances
+  * Default value will be used for type
+```go
+p1 := Point{}
+// x and y will be set to 0
+```
+* Another option is to omit the label names i.e. x and y
+  * But this way providing values for all fields is **mandatory**
+  * E.g.
+```go
+p1 := Point{10, 12}
+// Same as var p1 = Point{10, 12}
+```
+
+### Accessing and Modifying Struct Variables
+* Once we've defining and created struct instance we can access fields
+  * By using **dot notation** similar to how we access Python class attributrs
+  * E.g.
+```
+john := Student{"John", "Smith", 14, 9}
+fmt.Println(john.firstName)
+```
+* We can change a field's value within a struct
+  * E.g. `john.age = 15`
