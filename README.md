@@ -935,7 +935,9 @@ fmt.Println(playerScores)
 ### Access Array Values with Indices
 * As with Python we can access individual elements via it's index
   * But unlike Python we can't use a negative index
-   E.g.
+    * Workaround is to use `length := len()` and use `length-1` index
+      * E.g. `fmt.Println("Last", slice[length-1])`
+      * Or `slice[len(slice)-1] = newName`
 ```
 students = [3]string{"Jill", "Fred", "Sasha"}
 // Access the first element of the array
@@ -1045,4 +1047,44 @@ books = append(books, "Frankenstein")
 books = append(books, "Dracula")
 fmt.Println(books)
 
+```
+
+### Arrays and Slices in Functions
+* To pass in an array into a function as parameter we give the name, [] with no. of elements and element data type
+  * For slices we don't need no. of elements just []
+  * E.g.
+```
+func printFirstLastArray(array [4]int) {
+    fmt.Println("First", array[0])
+    fmt.Println("Last", array[3])
+}
+
+func printFirstLastSlice(slice []int) {
+    length := len(slice)
+    if (length > 0) {
+        fmt.Println("First", slice[0])
+        fmt.Println("Last", slice[length-1])
+    }
+}
+```
+* Modifying an array parameter only does so **locally within function**
+  * As Go in pass-by-value language
+  
+  * E.g.
+```
+// Changes to the array will only be local to the function
+func changeFirst(array [4]int, value int) {
+    array[0] = value
+}
+```
+  * Other option is to return the array within function
+* If we want to retain changes made use a slice
+  * E.g.
+```
+// Changes to the slice parameter will be permanent
+func changeFirst(slice []int, value int) {
+    if (len(slice) > 0) {
+        slice[0] = value
+    }
+}
 ```
