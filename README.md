@@ -13,7 +13,7 @@
 * To make a `.go` file into an executable we need to compile it via the `go build` command
     * E.g. `go build greet.go`
     * After this by doing an `ls` in the directory we can now see that we have an executable called `greet`
-```
+```bash
 ls
 greet     greet.go
 ```
@@ -38,7 +38,7 @@ greet     greet.go
   * 2nd line of code imports function from another package via `import` command
     * Notice that package name is in **quotes**
     * 
-```
+```go
 package main 
 
 import "fmt" 
@@ -72,7 +72,7 @@ func main () {
   * USe multiple import statements
   * Or use single statement with **parentheses**
     * E.g.
-```
+```go
 import (
   "package1"
   "package2"
@@ -82,7 +82,7 @@ import (
   * Then refer to this instead inside code
   * As we do in python using `as` keyword
   * E.g.
-```
+```go
 import (
   p1 "package1"
   "package2"
@@ -93,14 +93,14 @@ import (
 * There are two different types of comment in Go
   * Single-line using `//`
     * E.g.
-```
+```go
 // This entire line is ignored by the compiler
 // fmt.Println("Does NOT print")
 fmt.Println("This gets printed!") // This part gets ignored
 ```
   * Block comments a.k.a multi-line using `/* */`
     * E.g.
-```
+```go
 /*
 This is ignored.
 This is also ignored. 
@@ -111,7 +111,7 @@ fmt.Println("This WON'T print!")
 ### Go Resources
 * Golang includes **go doc** tool for viewing documentation about packages and their functions
   * E.g.
-```
+```go
 $ go doc fmt.Println
 package fmt // import "fmt"
 
@@ -137,7 +137,7 @@ func Println(a ...interface{}) (n int, err error)
   * Helps conveys intent of keeping consistent value
 * We use `const` keyword to create constant
 * E.g.
-```
+```go
 const funFact = "Hummingbirds' wings can beat up to 200 times a second."
 
 fmt.Println("Did you know?")
@@ -202,7 +202,7 @@ fmt.Println(funFact)
 ### Assigning Variables
 * After defining a variable we can assign it a value
   * E.g. 
-```
+```go
 var ipAddress
 ipAddress = "192.168.1.2"
 ```
@@ -215,7 +215,7 @@ ipAddress = "192.168.1.2"
 * Variables of different types have **default values**
   * i.e. String defaults to "", int to 0 and boolean to false
   * E.g.
-```
+```go
 var classTime uint32
 var averageGrade float32
 var teacherName string
@@ -1053,7 +1053,7 @@ fmt.Println(books)
 * To pass in an array into a function as parameter we give the name, [] with no. of elements and element data type
   * For slices we don't need no. of elements just []
   * E.g.
-```
+```go
 func printFirstLastArray(array [4]int) {
     fmt.Println("First", array[0])
     fmt.Println("Last", array[3])
@@ -1071,7 +1071,7 @@ func printFirstLastSlice(slice []int) {
   * As Go in pass-by-value language
   
   * E.g.
-```
+```go
 // Changes to the array will only be local to the function
 func changeFirst(array [4]int, value int) {
     array[0] = value
@@ -1080,7 +1080,7 @@ func changeFirst(array [4]int, value int) {
   * Other option is to return the array within function
 * If we want to retain changes made use a slice
   * E.g.
-```
+```go
 // Changes to the slice parameter will be permanent
 func changeFirst(slice []int, value int) {
     if (len(slice) > 0) {
@@ -1091,3 +1091,44 @@ func changeFirst(slice []int, value int) {
 * **Slices act as pointers**
 
 ## Go Maps
+
+### Intro to Maps
+* Essentially a python dictionary
+  * But we need to specify **type** of key and value
+* Syntax is `map`[key_type]value_type
+  * E.g.
+```go
+package main
+import "fmt"
+
+func main() {
+	// Create a simple contact list.
+	contacts := map[string]int{
+		"Joe":    2126778723,
+		"Angela": 4089978763,
+		"Shawn":  3143776876,
+		"Terell": 5026754531,
+	}
+	// Print out all the contacts
+	fmt.Println(contacts)
+}
+// Prints: map[Angela:4089978763 Joe:2126778723 Shawn:3143776876 Terell:5026754531]
+```
+* We access value's the same way we do in python
+
+### Map Creation
+* To create an **empty map** we can use the `make()` function
+  * Passing in map definition
+  * E.g. `prices := make(map[string]float32)`
+* To create a map with values already we don't need to use `make()`
+```go
+contacts := map[string]int{
+    "Joe":    2126778723,
+    "Angela": 4089978763,
+    "Shawn":  3143776876,
+    "Terell": 5026754531,
+}
+```
+
+### Accessing Values in Maps
+* 
