@@ -1237,3 +1237,53 @@ rect.area()
 ### Pointers to a Struct
 * Without a pointer only copies of variables are passed into function
   * Therefore using one allows us to modify original values
+* Example below uses Employee struct
+```go
+type Employee struct {
+  firstName string
+  lastName string
+  age int
+  title string
+}
+
+func main() {
+  steve := Employee{“Steve”, “Stevens”, 34, “Junior Manager”}
+  // Point to instance by getting address
+  pointerToSteve := &steve
+}
+```
+  * There are two ways we can use pointer to change `steve` field values
+    * 1. `(*pointerToSteve).firstName`
+    * 2. Simpler way: `pointerToSteve.firstName
+* Below e.g. show's us another way we can modify a struct's field within a func
+```go
+func (rectangle *Rectangle) modify(newLength float32){
+  rectangle.length = newLength
+}
+```
+  * In above function `rectangle` is pointer
+    * Dereferenced without need for `&`
+
+### Arrays of Structs
+* When we have multiple structs with **same type** we can put them into array
+  * E.g. `points := []Point{{1, 1}, {7, 27}, {12, 7}, {9, 25}}`
+  * If each point is set to  anamed variable we could also do this:
+```go
+a = {1, 1}
+b = {7, 27}
+c = {12, 7}
+d = {9, 25}
+
+points := []Point{a, b, c, d}
+fmt.Println(points[0]) // Output will be {1, 1}
+```
+* We can also access the struct's values like this
+  * E.g.
+```go
+points := []Point{{1, 1}, {7, 27}, {12, 7}, {9, 25}}
+
+points[1].x = 8
+points[1].y = 16
+
+fmt.Println(points[1]) // Output will be {8, 16}
+```
