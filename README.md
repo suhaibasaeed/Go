@@ -1149,3 +1149,10 @@ if status {
 ### Adding and Modifying
 * We can add a **new** key: value pair to a map using same syntax as Python
   * Updating an existing key's value is done in the same way also
+
+### Removing
+* To remove a key from a map we need to use the `delete()` function
+  * Syntax: `delete(mapName, keyName)` 
+    * E.g. `delete(contacts, "Gary")`
+* Trying to delete a key that **doesn't exist** has no effect
+  * i.e. no error or exception thrown unlike Python
