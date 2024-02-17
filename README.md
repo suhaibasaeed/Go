@@ -1247,7 +1247,7 @@ type Employee struct {
 }
 
 func main() {
-  steve := Employee{“Steve”, “Stevens”, 34, “Junior Manager”}
+  steve := Employee{"Steve", "Stevens", 34, "Junior Manager"}
   // Point to instance by getting address
   pointerToSteve := &steve
 }
