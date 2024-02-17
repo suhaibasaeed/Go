@@ -1131,4 +1131,21 @@ contacts := map[string]int{
 ```
 
 ### Accessing Values in Maps
-* 
+* We access values in a map the same way we do with Python dictionaries
+  * But if the **key doesn't exist** we're returned **default value for type**
+  * We can also get another value which is **boolean** telling us if key's in the map
+  * E.g. below unpacks map key where `status` var tells us if key is in map or not
+    * `Customer` gives us actualy value
+```go
+customer,status := customers["billy"]
+
+if status {
+  fmt.Println("we found the customer")
+} else {
+  fmt.Println("no such customer!")
+}
+```
+
+### Adding and Modifying
+* We can add a **new** key: value pair to a map using same syntax as Python
+  * Updating an existing key's value is done in the same way also
