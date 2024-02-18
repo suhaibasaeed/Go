@@ -11,6 +11,46 @@ import (
 	"golang.org/x/term"
 )
 
+func connectAndRunCmds() (string, error) {
+	// p, err := platform.NewPlatform("juniper_junos", "172.29.151.5", options.WithAuthNoStrictKey(), options.withAuthUsername("lab"), options.withAuthPassword("2022Nebul4"))
+
+
+	// if err != nil {
+	// 	return "", fmt.Errorf("failed to create platform; error: %+v", err)
+	// }
+
+	p, err := platform.NewPlatform("cisco_nxos", "172.29.151.1", options.WithAuthNoStrictKey(), options.WithAuthUsername("lab"), options.WithAuthPassword("2022Nebul4"))
+	if err != nil {
+		return "", fmt.Errorf("failed to create platform %+v", err)
+	}
+
+	d, err := p.GetNetworkDriver()
+	if err != nil {
+		return "", fmt.Errorf("failed to fetch network driver from the platform; error: %+v\n", err)
+	}
+
+	err = d.Open()
+	if err != nil {
+		return "", fmt.Errorf("Failed to open driver %+v", err)
+	}
+
+	defer d.Close()
+
+	// fetch the prompt
+	output, err := d.GetPrompt()
+	if err != nil {
+
+		return "", fmt.Errorf("failed to get prompt; error: %+v\n", err)
+	}
+
+	// output, err = d.Channel.SendInput("show version")
+	// if err != nil {
+	// 	return "", fmt.Errorf("failed to send input to device %+v", err)
+	// }
+
+	return string(output), nil
+}
+
 func fileToSlice(file string) []string {
 
 	// Use ReadFile function to get content of file
@@ -71,32 +111,7 @@ func getCreds() (string, string) {
 
 }
 
-func connectAndRunCmds() (string, error) {
-	p, err := platform.NewPlatform("juniper_junos", "172.29.151.5", options.WithAuthNoStrictKey(), options.withAuthUsername("lab"), options.withAuthPassword("2022Nebul4"))
 
-	if err != nil {
-		return "", fmt.Errorf("failed to create platform; error: %+v", err)
-	}
-
-	d, err := p.GetNetworkDriver()
-	if err != nil {
-		return "", fmt.Errorf("failed to get network driver from platform %+v", err)
-	}
-
-	err = d.Open()
-	if err != nil {
-		return "", fmt.Errorf("failed to connect to device %+v", err)
-	}
-
-	defer d.Close()
-
-	output, err = d.Channel.SendInput("show version")
-	if err != nil {
-		return "", fmt.Errorf("failed to send input to device %+v", err)
-	}
-
-	return string(output), nil
-}
 
 func main() {
 	// devices := fileToSlice("devices.txt")
