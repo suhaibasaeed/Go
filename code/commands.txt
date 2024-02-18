@@ -1,0 +1,4 @@
+show version
+show interface terse
+
+file list /var/tmp
