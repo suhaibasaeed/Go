@@ -71,6 +71,33 @@ func getCreds() (string, string) {
 
 }
 
+func connectAndRunCmds {
+	p, err := platform.NewPlatform("juniper_junos", "172.29.151.5", options.WithAuthNoStrictKey(), options.withAuthUsername("lab"), options.withAuthPassword("2022Nebul4"))
+
+	if err != nil {
+		return "",fmt.Errorf("failed to create platform; error: %+v", err)
+	}
+
+	d, err := p.GetNetworkDriver()
+	if err != nil {
+		return "",fmt.Errorf("failed to get network driver from platform %+v", err)
+	}
+
+	err = d.Open()
+	if err != nil {
+		return "",fmt.Errorf("failed to connect to device %+v", err)
+	}
+
+	defer d.Close()
+
+	output, err = d.Channel.SendInput("show version")
+	if err != nil {
+		return "",fmt.Errorf("failed to send input to device %+v", err)
+	}
+
+	return string(output), nil
+}
+
 func main() {
 	devices := fileToSlice("devices.txt")
 	commands := fileToSlice("commands.txt")
@@ -81,4 +108,12 @@ func main() {
 	fmt.Println(commands)
 	fmt.Println(timeNow)
 	fmt.Println(uname, pword)
+
+	output, err := connectAndRunCmds()
+	if err != nil {
+		fmt.Println("Error: ", err)
+	} else {
+		fmt.Println("Output: ", output)
+	}
+
 }
