@@ -2,17 +2,17 @@ package main
 
 import (
 	"fmt"
+	"github.com/scrapli/scrapligo/driver/options"
+	"github.com/scrapli/scrapligo/platform"
 	"io/ioutil"
 	"log"
 	"strings"
 	"time"
-	// "github.com/scrapli/scrapligo/driver/options"
-	// "github.com/scrapli/scrapligo/platform"
 	"golang.org/x/term"
 )
 
 func fileToSlice(file string) []string {
-	
+
 	// Use ReadFile function to get content of file
 	content, error := ioutil.ReadFile(file)
 
@@ -34,14 +34,14 @@ func fileToSlice(file string) []string {
 			trimmedStr := strings.TrimSpace(str)
 			file_list = append(file_list, trimmedStr)
 		}
-		
-	} 
-	
+
+	}
+
 	return file_list
 }
 
 func getCurrentTime() string {
-	
+
 	// Get current time
 	currentTime := time.Now()
 
@@ -60,7 +60,7 @@ func getCreds() (string, string) {
 	fmt.Print("Enter Password: ")
 	// Read password from terminal without echoing it back
 	password, error := term.ReadPassword(0)
-	
+
 	if error != nil {
 		log.Fatal(error)
 	}
@@ -71,43 +71,43 @@ func getCreds() (string, string) {
 
 }
 
-func connectAndRunCmds {
+func connectAndRunCmds() (string, error) {
 	p, err := platform.NewPlatform("juniper_junos", "172.29.151.5", options.WithAuthNoStrictKey(), options.withAuthUsername("lab"), options.withAuthPassword("2022Nebul4"))
 
 	if err != nil {
-		return "",fmt.Errorf("failed to create platform; error: %+v", err)
+		return "", fmt.Errorf("failed to create platform; error: %+v", err)
 	}
 
 	d, err := p.GetNetworkDriver()
 	if err != nil {
-		return "",fmt.Errorf("failed to get network driver from platform %+v", err)
+		return "", fmt.Errorf("failed to get network driver from platform %+v", err)
 	}
 
 	err = d.Open()
 	if err != nil {
-		return "",fmt.Errorf("failed to connect to device %+v", err)
+		return "", fmt.Errorf("failed to connect to device %+v", err)
 	}
 
 	defer d.Close()
 
 	output, err = d.Channel.SendInput("show version")
 	if err != nil {
-		return "",fmt.Errorf("failed to send input to device %+v", err)
+		return "", fmt.Errorf("failed to send input to device %+v", err)
 	}
 
 	return string(output), nil
 }
 
 func main() {
-	devices := fileToSlice("devices.txt")
-	commands := fileToSlice("commands.txt")
-	timeNow := getCurrentTime()
-	uname, pword := getCreds()
+	// devices := fileToSlice("devices.txt")
+	// commands := fileToSlice("commands.txt")
+	// timeNow := getCurrentTime()
+	// uname, pword := getCreds()
 
-	fmt.Println(devices)
-	fmt.Println(commands)
-	fmt.Println(timeNow)
-	fmt.Println(uname, pword)
+	// fmt.Println(devices)
+	// fmt.Println(commands)
+	// fmt.Println(timeNow)
+	// fmt.Println(uname, pword)
 
 	output, err := connectAndRunCmds()
 	if err != nil {
