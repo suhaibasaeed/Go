@@ -1335,6 +1335,8 @@ go 1.21.4
 ```
 * The `go mod tidy` command installs all imported dependencies
   * Creating `go.sum` for us
+* Another way to install dependencies is via `go get` command
+  * E.g. `go get github.com/howeyc/gopass`
 * The `go run .` command compiles everythign in current dir
 * Best practice to put compiled binaries from `go build` command in **bin directory**
   * Then put this into .gitignore

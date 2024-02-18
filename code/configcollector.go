@@ -6,8 +6,9 @@ import (
 	"log"
 	"strings"
 	"time"
-	"github.com/scrapli/scrapligo/driver/options"
-	"github.com/scrapli/scrapligo/platform"
+	// "github.com/scrapli/scrapligo/driver/options"
+	// "github.com/scrapli/scrapligo/platform"
+	"golang.org/x/term"
 )
 
 func fileToSlice(file string) []string {
@@ -49,13 +50,35 @@ func getCurrentTime() string {
 	return formattedTime
 }
 
-func getCreds()
+func getCreds() (string, string) {
+
+	// Get username and password from the user
+	var username string
+	fmt.Println("Please enter your username: ")
+	fmt.Scan(&username)
+
+	fmt.Print("Enter Password: ")
+	// Read password from terminal without echoing it back
+	password, error := term.ReadPassword(0)
+	
+	if error != nil {
+		log.Fatal(error)
+	}
+	// Turn password from bytes into string
+	passwordStr := string(password)
+
+	return username, passwordStr
+
+}
 
 func main() {
 	devices := fileToSlice("devices.txt")
 	commands := fileToSlice("commands.txt")
 	timeNow := getCurrentTime()
+	uname, pword := getCreds()
+
 	fmt.Println(devices)
 	fmt.Println(commands)
 	fmt.Println(timeNow)
+	fmt.Println(uname, pword)
 }
