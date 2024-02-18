@@ -6,6 +6,8 @@ import (
 	"log"
 	"strings"
 	"time"
+	"github.com/scrapli/scrapligo/driver/options"
+	"github.com/scrapli/scrapligo/platform"
 )
 
 func fileToSlice(file string) []string {
@@ -47,6 +49,7 @@ func getCurrentTime() string {
 	return formattedTime
 }
 
+func getCreds()
 
 func main() {
 	devices := fileToSlice("devices.txt")
