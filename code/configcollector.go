@@ -5,9 +5,10 @@ import (
 	"io/ioutil"
 	"log"
 	"strings"
+	"time"
 )
 
-func FileToSlice(file string) []string {
+func fileToSlice(file string) []string {
 	
 	// Use ReadFile function to get content of file
 	content, error := ioutil.ReadFile(file)
@@ -34,14 +35,24 @@ func FileToSlice(file string) []string {
 	} 
 	
 	return file_list
+}
 
+func getCurrentTime() string {
+	
+	// Get current time
+	currentTime := time.Now()
 
+	formattedTime := currentTime.Format("02-01-06@15.04")
+
+	return formattedTime
 }
 
 
 func main() {
-	devices := FileToSlice("devices.txt")
-	commands := FileToSlice("commands.txt")
+	devices := fileToSlice("devices.txt")
+	commands := fileToSlice("commands.txt")
+	timeNow := getCurrentTime()
 	fmt.Println(devices)
 	fmt.Println(commands)
+	fmt.Println(timeNow)
 }
