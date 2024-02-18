@@ -1318,3 +1318,25 @@ type Employee struct{
   * Here we could now do this: `fmt.Println(carl.firstName)` instead of the above
   * But we couldn't have 2 anonymous fields of the same type
     * i.e. of `Name` type
+
+## Extra Notes
+
+### PacketCoders
+* Golang doesn't have package manager like Python's PyPi
+  * URL usually used e.g. `go mod init github.com/suhaibasaeed/Go/codecademy/code`
+    * Creates a `go.mod` file
+      * E.g below shows how file first looks
+        * If we use 3rd party modules it will appear here
+          * `go.sum` file would also be here in this case
+```bash
+module github.com/suhaibasaeed/Go/codecademy/code
+
+go 1.21.4
+```
+* The `go mod tidy` command installs all imported dependencies
+  * Creating `go.sum` for us
+* The `go run .` command compiles everythign in current dir
+* Best practice to put compiled binaries from `go build` command in **bin directory**
+  * Then put this into .gitignore
+  * E.g. command `go build -o ./bin/myapp main.go`
+* Go built in formatter works via `go fmt` command
