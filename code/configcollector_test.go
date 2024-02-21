@@ -4,24 +4,16 @@ import (
 	"fmt"
 	"github.com/scrapli/scrapligo/driver/options"
 	"github.com/scrapli/scrapligo/platform"
-	"golang.org/x/term"
+	"io/ioutil"
 	"log"
-	"os"
 	"strings"
 	"time"
+	"golang.org/x/term"
 )
 
-func WriteStringToFile(filename, data string) error {
-	// Write the string data to the file named 'filename'
-	err := os.WriteFile(filename, []byte(data), 0644)
-	if err != nil {
-		return err
-	}
-	return nil
-}
-func connectAndRunCmds(device_type string, hostName string, username string, password string, commands []string) (string, error) {
+func connectAndRunCmds() (string, error) {
 
-	p, err := platform.NewPlatform(device_type, hostName, options.WithAuthNoStrictKey(), options.WithAuthUsername(username), options.WithAuthPassword(password))
+	p, err := platform.NewPlatform("juniper_junos", "rr1.hex", options.WithAuthNoStrictKey(), options.WithAuthUsername("ssaeed"), options.WithAuthPassword("Suhaib.saeedgamma2022"))
 	if err != nil {
 		return "", fmt.Errorf("failed to create platform %+v", err)
 	}
@@ -38,31 +30,19 @@ func connectAndRunCmds(device_type string, hostName string, username string, pas
 
 	defer d.Close()
 
-	all_output := ""
-
-	for _, cmd := range commands {
-		output, err := d.Channel.SendInput(cmd)
-		if err != nil {
-			return "", fmt.Errorf("failed to send input to device %+v", err)
-		}
-		all_output += cmd + "\n"
-		all_output += "-----------------------------------\n"
-		all_output += string(output) + "\n"
-		all_output += "-------------------------------------------------------------------\n"
-
+	cmd := "show version"
+	output, err := d.Channel.SendInput(cmd)
+	if err != nil {
+		return "", fmt.Errorf("failed to send input to device %+v", err)
 	}
 
-	file_err := WriteStringToFile(hostName+"_"+getCurrentTime()+".txt", all_output)
-	if file_err != nil {
-		return "", fmt.Errorf("failed to write to file %+v", err)
-	}
-	return all_output, nil
+	return string(output), nil
 }
 
 func fileToSlice(file string) []string {
 
 	// Use ReadFile function to get content of file
-	content, error := os.ReadFile(file)
+	content, error := ioutil.ReadFile(file)
 
 	// Check for errors, if yes then print error and exit
 	if error != nil {
@@ -102,7 +82,7 @@ func getCreds() (string, string) {
 
 	// Get username and password from the user
 	var username string
-	fmt.Print("Please enter your username: ")
+	fmt.Println("Please enter your username: ")
 	fmt.Scan(&username)
 
 	fmt.Print("Enter Password: ")
@@ -119,16 +99,24 @@ func getCreds() (string, string) {
 
 }
 
+
+
 func main() {
-	devices := fileToSlice("devices.txt")
-	commands := fileToSlice("commands.txt")
-	uname, pword := getCreds()
+	// devices := fileToSlice("devices.txt")
+	// commands := fileToSlice("commands.txt")
+	// timeNow := getCurrentTime()
+	// uname, pword := getCreds()
 
-	for _, device := range devices {
+	// fmt.Println(devices)
+	// fmt.Println(commands)
+	// fmt.Println(timeNow)
+	// fmt.Println(uname, pword)
 
-		_, err := connectAndRunCmds("juniper_junos", device, uname, pword, commands)
-		if err != nil {
-			fmt.Println("Error: ", err)
-		}
+	output, err := connectAndRunCmds()
+	if err != nil {
+		fmt.Println("Error: ", err)
+	} else {
+		fmt.Println("Output: ", output)
 	}
+
 }
