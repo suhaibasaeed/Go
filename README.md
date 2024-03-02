@@ -203,7 +203,7 @@ fmt.Println(funFact)
 * After defining a variable we can assign it a value
   * E.g. 
 ```go
-var ipAddress
+var ipAddress string
 ipAddress = "192.168.1.2"
 ```
 * We could also **define** and **assign** a value in one line
